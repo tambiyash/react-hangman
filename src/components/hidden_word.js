@@ -5,9 +5,7 @@ export default class HiddenWord extends Component {
 
     getSlots() {
         let letters = this.props.word.split('');
-        console.log(this.props.word);
         return letters.map((letter, index) => {
-            console.log(letter);
             let guesses = this.props.guesses;
             let reveal = this.props.reveal;
             let classNames = ['letter-slot'];
