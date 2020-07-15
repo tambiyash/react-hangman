@@ -95,19 +95,16 @@ export default class App extends Component {
 
     handleFormSubmit = (mail) => {
         let {players, active, currentPlayer} = this.state;
-        _.forEach(players, (item) => {
-            if (item.username !== mail) {
-                let player = {
-                    username: mail,
-                    score: 0
-                };
-                players.push(player);
-                currentPlayer = mail;
+        let player = _.find(players, (item) => item.username === mail);
+        if (!player) {
+            player = {
+                username: mail,
+                score: 0
             }
-            else {
-                currentPlayer = item.username;
-            }
-        });
+            players.push(player);
+        }
+
+        currentPlayer = player.username;
         active = !active;
         this.setState({ players, active, currentPlayer });
     }
