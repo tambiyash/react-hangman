@@ -1,7 +1,7 @@
 # react-hangman
 Hangman is back with a bang !! User recognition and score updates in place.<br/>
 
-Check it out here - 
+Check it out here - https://tambiyash.github.io/react-hangman/
 
 You will be given 2 hints- one at the start of the game and other after 5 turns i.e. on the verge of death. Total 6 incorrect tries before you prove your worth.<br/><br/>
 
