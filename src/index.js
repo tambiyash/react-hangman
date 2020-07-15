@@ -6,7 +6,17 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <header>
+        <div class="container">
+            <div id="brand_logo">
+                <h1><span class="highlight table">Hangman</span>, Do Or Die !!</h1>
+            </div>
+        </div>
+      </header>
+      <App />
+      <footer>
+          <kbd>Design by Yash Tambi, Copyright &copy; 2017</kbd>
+      </footer>
   </React.StrictMode>,
   document.getElementById('root')
 );
