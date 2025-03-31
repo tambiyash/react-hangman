@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "44b49f2c45eafd7928f8b13d98a72ed0",
+    "revision": "88103f7bdf4dc74481faf59ff3487d4c",
     "url": "/react-hangman/index.html"
   },
   {
