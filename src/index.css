@@ -1,162 +1,396 @@
-body {
-  padding: 0;
+/* Base styles */
+* {
+  box-sizing: border-box;
   margin: 0;
-  background-color: gainsboro;
+  padding: 0;
 }
 
-/*index html*/
+body {
+  background-color: gainsboro;
+  font-family: Arial, sans-serif;
+}
 
+/* Header */
 header {
   background: #333;
-  color: white;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  min-height: 70px;
   border-bottom: 5px #3ac1b8 solid;
+  padding: 20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-  header #brand_logo h1 {
-      margin: 0;
-      text-align:center;
-  }
-
-  header .highlight {
-      color: #3ac1b8;
-      font-weight: bold;
-  }
-
-/*root folder*/
-
-#root {
-  height:100%;
-  min-height:29em;
+#brand_logo {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
 }
 
-#root h1 {
-  margin: 10px;
-  text-align: center;
-}
-
-#root .new-game {
-  background: #456;
-  font-size: 24px;
+#brand_logo h1 {
   color: white;
+  font-size: 2em;
+  text-align: center;
+  margin: 0;
+}
+
+.highlight {
+  color: #3ac1b8;
+}
+
+/* Main container */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 20px;
+  width: 100%;
+}
+
+/* Login Form */
+#hangmandesc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 140px); /* Account for header and footer */
+  width: 100%;
+  padding: 0 20px;
+}
+
+#form-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 15px auto;
+  width: 100%;
+  max-width: 800px; /* Increased to accommodate longer placeholder */
+  padding: 0 20px;
+}
+
+#form-login input {
+  flex: 1;
+  font-size: 1em;
+  padding: 10px 15px;
+  min-width: 300px;
+  max-width: 500px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 44px;
+}
+
+#form-login button {
+  background: #3ac1b8;
   border: none;
   border-radius: 4px;
-  display: block;
-  margin: 20px auto 0;
-  opacity: 0;
-  transition: opacity 1s;
+  color: white;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 10px 15px;
+  height: 44px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px; /* Fixed width for button */
 }
 
-  #root .new-game-shown {
-      background: #3ac1b8;
-      font-size: 24px;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      display: block;
-      margin: 20px auto 0;
-      opacity: 1;
-      transition: opacity 1s;
-  }
+/* Game Layout */
+.row {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
+  gap: 20px;
+}
 
-/*keyboard components*/
+#gamesection {
+  flex: 2;
+  min-width: 300px;
+  padding: 20px;
+}
+
+#playersection {
+  flex: 1;
+  min-width: 250px;
+  padding: 20px;
+}
+
+#gamelayout {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 20px 0;
+  padding: 20px;
+}
+
+#gamedesc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  min-height: 20vh;
+}
+
+/* Letter Slots */
+.letter-slots {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  overflow-x: auto;
+  padding: 10px 0;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.letter-slot {
+  align-items: center;
+  border-bottom: 2px solid #345;
+  color: #678;
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  height: 40px;
+  justify-content: center;
+  margin: 0 5px;
+  min-width: 40px;
+  text-transform: uppercase;
+}
+
+.letter-slot.revealed {
+  color: #345;
+}
+
+/* Keyboard */
+.hangman-keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
 
 .hangman-keyboard button {
-  width: 30px;
-  line-height: 23px;
   background: #abc;
   border: none;
   border-radius: 4px;
   color: #345;
-  margin: 1px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  height: 40px;
+  min-width: 40px;
   text-transform: uppercase;
-  font-weight: bold;
+  transition: opacity 0.3s;
 }
 
-  .hangman-keyboard button[disabled] {
-      opacity: 0.5;
-  }
-
-
-/*// letter slots components*/
-
-.letter-slots {
-  text-align: center;
-  margin-bottom: 8%;
+.hangman-keyboard button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
-  .letter-slots .letter-slot {
-      display: inline-block;
-      border-bottom: 2px solid #345;
-      color: #678;
-      width: 30px;
-      height: 30px;
-      margin: 3px;
-      text-transform: uppercase;
-      text-align: center;
-      font-size: 24px;
-      font-weight:bold;
-      vertical-align: bottom;
-  }
-
-      .letter-slots .letter-slot.revealed {
-          color: #d8dde2;
-      }
-
-#hangmandesc{
-  margin-top:10em;
-  width: 60%;
+/* Game Controls */
+.new-game,
+.new-game-shown {
+  background: #456;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-size: 20px;
+  margin: 20px auto;
+  padding: 10px 20px;
+  transition: all 0.3s;
 }
 
-#form-login {
-  margin-left: 60px;
-  margin-top: 20px;
+.new-game {
+  opacity: 0;
+  pointer-events: none;
 }
 
-@media screen and (max-width: 600px) {
-  #hangmandesc {
-      width: 100%;
-  }
+.new-game-shown {
+  background: #3ac1b8;
+  opacity: 1;
 }
 
-#gamedesc {
-  margin-top: 30px;
+/* Hints Section */
+#hints {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
 }
 
-#hangmandesc h4{
-  font:100%;
-  text-align:center;
-}
-
-#usermail {
-  padding-left: 24%;
-  padding-top: 3%;
-}
-
-#gamelayout {
-  border: thin ridge;
-  padding-bottom: 2em;
-  margin: 3em 0 !important;
-}
-
-#gamelayout button {
-  vertical-align:central;
-}
-
-#playersection{
-  padding-left:5%;
-}
-
-footer {
-  position: fixed;
-  bottom: 0;
+/* Player Score Table */
+table {
+  border-collapse: collapse;
+  margin: 20px 0;
   width: 100%;
-  padding: 1%;
-  background-color: #333;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background: #345;
+  color: white;
+}
+
+/* Footer */
+footer {
+  background: #333;
+  bottom: 0;
+  color: white;
+  padding: 15px;
+  position: fixed;
   text-align: center;
-  font-weight: bold;
-  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+  
+  #gamesection,
+  #playersection {
+    width: 100%;
+    flex: none;
+  }
+  
+  #playersection {
+    margin-bottom: 80px;
+    overflow-x: hidden; /* Hide horizontal scroll */
+  }
+
+  /* Ensure table is responsive */
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  #brand_logo {
+    padding: 0 15px;
+  }
+  
+  .letter-slot {
+    font-size: 20px;
+    height: 35px;
+    min-width: 20px;
+  }
+  
+  .hangman-keyboard button {
+    font-size: 14px;
+    height: 35px;
+    min-width: 35px;
+  }
+
+  #form-login {
+    padding: 15px;
+  }
+
+  #form-login input {
+    min-width: 250px;
+  }
+
+  .button-row {
+    gap: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    padding: 5px;
+  }
+
+  #gamesection,
+  #playersection {
+    padding: 10px;
+  }
+  
+  #playersection {
+    margin-bottom: 100px; /* Extra space for footer */
+  }
+
+  /* Adjust table for better mobile view */
+  th, td {
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  #brand_logo h1 {
+    font-size: 1.5em;
+  }
+  
+  #form-login {
+    flex-direction: column;
+    max-width: 350px;
+    gap: 15px;
+  }
+  
+  #form-login input,
+  #form-login button {
+    width: 100%;
+    max-width: none;
+    min-width: auto;
+  }
+  
+  .letter-slot {
+    font-size: 16px;
+    height: 30px;
+    min-width: 10px;
+  }
+  
+  .hangman-keyboard button {
+    font-size: 12px;
+    height: 30px;
+    min-width: 30px;
+  }
+  
+  #hints {
+    font-size: 14px;
+  }
+  
+  #playersection {
+    overflow-x: auto;
+  }
+
+  .button-row {
+    gap: 1px;
+  }
 }

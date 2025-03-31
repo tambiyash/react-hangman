@@ -42,7 +42,7 @@ export default class HiddenWord extends Component {
             );            
         });
         return (
-            <div style={{ paddingRight: '40%', paddingTop: '10%' }} className='letter-slots'>
+            <div className='letter-slots'>
                 {letterslots}
             </div>
         );

@@ -28,7 +28,7 @@ export default class Game extends Component {
     render() {
 
         return (
-            <div>
+            <div className="game-container">
                 <div id="gamedesc">
                     <p><strong>Guess the word.... Tough job ?? Okay, Below is an hint. </strong></p>
                     <h5><strong>P.S. - You will get another hint after 5 incorrect tries.</strong></h5>
@@ -38,36 +38,33 @@ export default class Game extends Component {
                 </div>
 
                 <div className="row" id="gamelayout">
-                    <div className="col-sm-12">
-                        <div id="hints" style={{ paddingTop: '1em', paddingBottom: '10%' }}>
-                            <div className="col-sm-2"><h5><strong><span className="text-default">Hint : </span></strong></h5></div>
-                            <div className="col-sm-10"><h5><strong><span className="text-default">{this.props.word.hint_one}</span></strong></h5></div>
+                    <>
+                        <div id="hints">
+                            <h5><strong><span className="text-default">Hint : </span></strong></h5>
+                            <h5><strong><span className="text-default">{this.props.word.hint_one}</span></strong></h5>
                             <div style={{ display: (this.props.turnsleft <= 1) ? 'block' : 'none' }} className="text-danger">
-                                <div className="col-sm-3"><h5><strong><span className="text-default">Another Hint : </span></strong></h5></div>
-                                <div className="col-sm-9"><h5><strong><span className="text-default">{this.props.word.hint_two}</span></strong></h5></div>
+                                <h5><strong><span className="text-default">Another Hint : </span></strong></h5>
+                                <h5><strong><span className="text-default">{this.props.word.hint_two}</span></strong></h5>
                             </div>
                         </div>
-                        <div>
+                        <>
                             <HiddenWord style={{ paddingTop: '5%' }}
                                 word={this.props.word.word_name}
                                 reveal={this.props.over}
                                 guesses={this.props.guesses} />
-                            <div className="col-sm-9">
-                                <Keyboard
-                                    onPress={this.handlePress.bind(this)}
-                                    enabled={this.props.keyboardEnabled}
-                                    disabledLetters={this.props.guesses} />
-                            </div>
-                            <div className="col-sm-3">
-                                <button style={{ marginTop: '70%' }}
-                                    className={this.props.classText}
-                                    disabled={!this.props.over && !this.props.won}
-                                    onClick={this.handleNewGame.bind(this)}>
-                                    New Game
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                            <Keyboard
+                                onPress={this.handlePress.bind(this)}
+                                enabled={this.props.keyboardEnabled}
+                                disabledLetters={this.props.guesses} />
+                        
+                            <button
+                                className={this.props.classText}
+                                disabled={!this.props.over && !this.props.won}
+                                onClick={this.handleNewGame.bind(this)}>
+                                New Game
+                            </button>
+                        </>
+                    </>
                 </div>
             </div>
         );
