@@ -21,7 +21,15 @@ export default class Game extends Component {
             return <h4 className="text-danger"><strong>GAME OVER... PLEASE TRY AGAIN !!</strong></h4>
         }
         else {
-            return <h4 style={{ color: "#019e93", display: this.props.over && this.props.won ? 'none' : 'block' }}><strong>Total   <span style={{ fontSize: '1em' }} className="btn btn-sm btn-info"><strong>{this.props.turnsleft}</strong></span>   incorrect tries before you prove YOU ARE AWESOME !!</strong></h4>
+            return (
+                <h4 style={{ color: "#019e93", display: this.props.over && this.props.won ? 'none' : 'block' }}>
+                    <strong>Total   
+                        <span style={{ fontSize: '1em' }} className={this.props.turnsleft === 1 ? "btn-danger" : "btn-info"}>
+                            <strong>{this.props.turnsleft}</strong>
+                        </span>   incorrect tries before you prove YOU ARE AWESOME !!
+                    </strong>
+                </h4>
+            );
         }
     }
 
